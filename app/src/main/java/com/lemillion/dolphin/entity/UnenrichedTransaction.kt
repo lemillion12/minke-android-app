@@ -1,17 +1,18 @@
 package com.lemillion.dolphin.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+import java.time.LocalDate
 
 @Entity
 data class UnenrichedTransaction(
-    @PrimaryKey val transactionId: Int,
+    @PrimaryKey @ColumnInfo(name = "rowid") val id: Int,
     val accountNumber: String?,
     val message: String,
     val status: EnrichmentStatus,
     val type: MessageType,
-    val updateTime: Date
+    val insertDate: LocalDate
 )
 
 enum class MessageType {

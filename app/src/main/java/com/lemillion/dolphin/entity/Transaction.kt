@@ -1,17 +1,18 @@
 package com.lemillion.dolphin.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+import java.time.LocalDate
 
 @Entity
 data class Transaction(
-    @PrimaryKey val transactionId: Int,
+    @PrimaryKey @ColumnInfo(name = "rowid") val id: Int,
     val accountId: Int,
-    val transactionDate: Date,
+    val transactionDate: LocalDate,
     val direction: TransactionDirection,
     val amount: Double,
-    val valueDate: Date?,
+    val valueDate: LocalDate?,
     val referenceNumber: String?,
     val description: String?
 )

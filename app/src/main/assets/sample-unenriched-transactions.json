@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "accountNumber": "004561234",
+    "message": "UPDATE: INR 1 debited from A/c XX1234 on 18-JUN-21. Info: UPI-Mr. X-upiaddress@okaxis-SOMB0000789-987654321987-trf. Avl bal:INR 5",
+    "status": "PENDING",
+    "type": "TEXT_MESSAGE",
+    "insertDate": "2021-06-19"
+  },
+  {
+    "id": 2,
+    "message": "UPDATE: INR 2 debited from A/c XX1234 on 19-JUN-21. Info: UPI-Mr. X-upiaddress@okaxis-SOMB0000789-123456789123-trf. Avl bal:INR 3",
+    "status": "PENDING",
+    "type": "TEXT_MESSAGE",
+    "insertDate": "2021-06-19"
+  }
+]

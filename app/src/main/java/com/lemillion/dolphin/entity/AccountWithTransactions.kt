@@ -3,10 +3,10 @@ package com.lemillion.dolphin.entity
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class AccountAndTransactions(
+data class AccountWithTransactions(
     @Embedded val account: Account,
     @Relation(
-        parentColumn = "accountId",
+        parentColumn = "id",
         entityColumn = "accountId"
     )
     val transactions: List<Transaction>
