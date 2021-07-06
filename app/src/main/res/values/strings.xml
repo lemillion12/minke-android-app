@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dolphin</string>
+    <string name="refresh_data">Refresh Data</string>
 </resources>

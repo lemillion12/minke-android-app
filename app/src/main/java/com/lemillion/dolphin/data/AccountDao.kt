@@ -1,4 +1,4 @@
-package com.lemillion.dolphin.dao
+package com.lemillion.dolphin.data
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -10,7 +10,7 @@ import com.lemillion.dolphin.entity.AccountWithTransactions
 @Dao
 interface AccountDao {
     @Insert
-    fun insertAll(vararg accounts: List<Account>)
+    fun insertAll(vararg accounts: Account)
 
     @Transaction
     @Query("SELECT * FROM Account")

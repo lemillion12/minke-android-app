@@ -1,13 +1,12 @@
 package com.lemillion.dolphin.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDate
 
 @Entity
 data class Transaction(
-    @PrimaryKey @ColumnInfo(name = "rowid") val id: Int,
+    @PrimaryKey val id: Int,
     val accountId: Int,
     val transactionDate: LocalDate,
     val direction: TransactionDirection,

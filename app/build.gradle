@@ -5,17 +5,23 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.lemillion.dolphin"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -25,34 +31,54 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility kotlin_version
-        targetCompatibility kotlin_version
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
+
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
+    packagingOptions {
+        // Multiple dependency bring these files in. Exclude them to enable
+        // our test APK to build (has no effect on our AARs)
+        excludes += "/META-INF/AL2.0"
+        excludes += "/META-INF/LGPL2.1"
     }
 }
 
 dependencies {
     // Base dependencies
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:' + androidx_core_version
-    implementation 'androidx.appcompat:appcompat:' + androidx_appcompat_version
-    implementation 'com.google.android.material:material:' + android_material_version
-    implementation 'androidx.constraintlayout:constraintlayout:' + constraint_layout_version
-    testImplementation 'junit:junit:' + junit_version
-    androidTestImplementation 'androidx.test.ext:junit:' + junit_ext_version
-    androidTestImplementation 'androidx.test.espresso:espresso-core:' + espresso_version
+    implementation "androidx.core:core-ktx:$rootProject.ext.androidxCoreVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompatVersion"
+    implementation "com.google.android.material:material:$rootProject.ext.materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.junitExtVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
 
     // Room dependencies
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation("androidx.room:room-runtime:$rootProject.ext.roomVersion")
+    annotationProcessor "androidx.room:room-compiler:$rootProject.ext.roomVersion"
     // To use Kotlin annotation processing tool (kapt)
-    kapt("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$rootProject.ext.roomVersion")
+    // Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$rootProject.ext.roomVersion")
 
     // Work Manager
-    implementation("androidx.work:work-runtime-ktx:$work_version")
+    implementation("androidx.work:work-runtime-ktx:$rootProject.ext.workVersion")
 
     // Gson
-    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+
+    // Recycler View
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
+
+    // Coroutines
+    // lifecycleScope:
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ext.coroutineVersion"
+    // viewModelScope:
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.coroutineVersion"
 }
