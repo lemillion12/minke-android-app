@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -51,34 +52,48 @@ android {
 
 dependencies {
     // Base dependencies
-    implementation "androidx.core:core-ktx:$rootProject.ext.androidxCoreVersion"
-    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompatVersion"
-    implementation "com.google.android.material:material:$rootProject.ext.materialVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
-    testImplementation "junit:junit:$rootProject.ext.junitVersion"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.junitExtVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+    implementation "androidx.core:core-ktx:$rootProject.androidxCoreVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.appcompatVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
 
     // Room dependencies
-    implementation("androidx.room:room-runtime:$rootProject.ext.roomVersion")
-    annotationProcessor "androidx.room:room-compiler:$rootProject.ext.roomVersion"
+    implementation("androidx.room:room-runtime:$rootProject.roomVersion")
+    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
     // To use Kotlin annotation processing tool (kapt)
-    kapt("androidx.room:room-compiler:$rootProject.ext.roomVersion")
+    kapt("androidx.room:room-compiler:$rootProject.roomVersion")
     // Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:$rootProject.ext.roomVersion")
+    implementation("androidx.room:room-ktx:$rootProject.roomVersion")
 
     // Work Manager
-    implementation("androidx.work:work-runtime-ktx:$rootProject.ext.workVersion")
+    implementation("androidx.work:work-runtime-ktx:$rootProject.workVersion")
 
     // Gson
-    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     // Recycler View
-    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
 
-    // Coroutines
-    // lifecycleScope:
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ext.coroutineVersion"
-    // viewModelScope:
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.coroutineVersion"
+    // Fragment
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
+
+    // lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecycleVersion"
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecycleVersion")
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$rootProject.lifecycleVersion")
+
+    // Dependency Injection
+    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$rootProject.hiltVersion"
+
+    // Testing
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.junitExtVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
 }

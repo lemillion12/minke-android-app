@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lemillion.dolphin.R
-import com.lemillion.dolphin.entity.UnenrichedTransaction
+import com.lemillion.dolphin.data.entity.UnenrichedTransaction
 
 
 class TransactionViewAdapter(private val dataSet: Array<UnenrichedTransaction>) :

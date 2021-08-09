@@ -1,10 +1,11 @@
-package com.lemillion.dolphin.data
+package com.lemillion.dolphin.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.lemillion.dolphin.entity.UnenrichedTransaction
+import com.lemillion.dolphin.data.entity.UnenrichedTransaction
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UnenrichedTransactionDao {
@@ -12,5 +13,5 @@ interface UnenrichedTransactionDao {
     suspend fun insertAll(unenrichedTransactions: List<UnenrichedTransaction>)
 
     @Query("SELECT * FROM UnenrichedTransaction")
-    suspend fun getAll(): List<UnenrichedTransaction>
+    fun getUnenrichedTransactions(): Flow<List<UnenrichedTransaction>>
 }

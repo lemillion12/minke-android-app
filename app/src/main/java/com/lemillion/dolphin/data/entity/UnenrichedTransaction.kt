@@ -1,13 +1,12 @@
-package com.lemillion.dolphin.entity
+package com.lemillion.dolphin.data.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDate
 
 @Entity
 data class UnenrichedTransaction(
-    @PrimaryKey @ColumnInfo(name = "rowid") val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val accountNumber: String?,
     val message: String,
     val status: EnrichmentStatus,
