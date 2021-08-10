@@ -1,4 +1,4 @@
-package com.lemillion.dolphin
+package com.lemillion.minke
 
 import android.app.Application
 import androidx.work.Configuration

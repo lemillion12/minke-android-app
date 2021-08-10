@@ -1,4 +1,4 @@
-package com.lemillion.dolphin
+package com.lemillion.minke
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lemillion.dolphin.adapter.TransactionViewAdapter
-import com.lemillion.dolphin.data.entity.UnenrichedTransaction
-import com.lemillion.dolphin.viewmodels.UnenrichedTransactionListViewModel
+import com.lemillion.minke.adapter.TransactionViewAdapter
+import com.lemillion.minke.data.entity.UnenrichedTransaction
+import com.lemillion.minke.viewmodels.UnenrichedTransactionListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

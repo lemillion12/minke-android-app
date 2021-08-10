@@ -1,9 +1,9 @@
-package com.lemillion.dolphin.di
+package com.lemillion.minke.di
 
 import android.content.Context
-import com.lemillion.dolphin.data.dao.AccountDao
-import com.lemillion.dolphin.data.dao.UnenrichedTransactionDao
-import com.lemillion.dolphin.data.database.AppDatabase
+import com.lemillion.minke.data.dao.AccountDao
+import com.lemillion.minke.data.dao.UnenrichedTransactionDao
+import com.lemillion.minke.data.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

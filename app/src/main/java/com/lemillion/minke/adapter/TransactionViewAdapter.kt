@@ -1,12 +1,12 @@
-package com.lemillion.dolphin.adapter
+package com.lemillion.minke.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.lemillion.dolphin.R
-import com.lemillion.dolphin.data.entity.UnenrichedTransaction
+import com.lemillion.minke.R
+import com.lemillion.minke.data.entity.UnenrichedTransaction
 
 
 class TransactionViewAdapter(private val dataSet: Array<UnenrichedTransaction>) :

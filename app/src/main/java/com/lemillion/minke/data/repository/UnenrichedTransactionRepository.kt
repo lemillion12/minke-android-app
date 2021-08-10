@@ -1,6 +1,6 @@
-package com.lemillion.dolphin.data.repository
+package com.lemillion.minke.data.repository
 
-import com.lemillion.dolphin.data.dao.UnenrichedTransactionDao
+import com.lemillion.minke.data.dao.UnenrichedTransactionDao
 import javax.inject.Inject
 import javax.inject.Singleton
 

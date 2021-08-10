@@ -1,4 +1,4 @@
-package com.lemillion.dolphin.data.database
+package com.lemillion.minke.data.database
 
 import android.content.Context
 import android.util.Log
@@ -8,8 +8,8 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
-import com.lemillion.dolphin.data.entity.UnenrichedTransaction
-import com.lemillion.dolphin.utilities.LocalDateTypeAdapter
+import com.lemillion.minke.data.entity.UnenrichedTransaction
+import com.lemillion.minke.utilities.LocalDateTypeAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.time.LocalDate

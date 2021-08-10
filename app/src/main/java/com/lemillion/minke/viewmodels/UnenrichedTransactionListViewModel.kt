@@ -1,10 +1,10 @@
-package com.lemillion.dolphin.viewmodels
+package com.lemillion.minke.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.lemillion.dolphin.data.entity.UnenrichedTransaction
-import com.lemillion.dolphin.data.repository.UnenrichedTransactionRepository
+import com.lemillion.minke.data.entity.UnenrichedTransaction
+import com.lemillion.minke.data.repository.UnenrichedTransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

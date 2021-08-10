@@ -1,4 +1,4 @@
-package com.lemillion.dolphin.data.entity
+package com.lemillion.minke.data.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation

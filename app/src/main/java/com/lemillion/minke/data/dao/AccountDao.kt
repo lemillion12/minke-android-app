@@ -1,8 +1,8 @@
-package com.lemillion.dolphin.data.dao
+package com.lemillion.minke.data.dao
 
 import androidx.room.*
-import com.lemillion.dolphin.data.entity.Account
-import com.lemillion.dolphin.data.entity.AccountWithTransactions
+import com.lemillion.minke.data.entity.Account
+import com.lemillion.minke.data.entity.AccountWithTransactions
 import kotlinx.coroutines.flow.Flow
 
 @Dao

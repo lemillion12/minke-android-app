@@ -1,7 +1,7 @@
-package com.lemillion.dolphin.utilities
+package com.lemillion.minke.utilities
 
 /**
  * Constants used throughout the app.
  */
-const val DATABASE_NAME = "dolphin-db"
+const val DATABASE_NAME = "minke-db"
 const val SAMPLE_ACCOUNT_DATA_FILENAME = "sample-unenriched-transactions.json"

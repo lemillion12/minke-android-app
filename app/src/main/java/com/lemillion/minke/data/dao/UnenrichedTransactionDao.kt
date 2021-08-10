@@ -1,10 +1,10 @@
-package com.lemillion.dolphin.data.dao
+package com.lemillion.minke.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.lemillion.dolphin.data.entity.UnenrichedTransaction
+import com.lemillion.minke.data.entity.UnenrichedTransaction
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,4 +1,4 @@
-package com.lemillion.dolphin.data.database
+package com.lemillion.minke.data.database
 
 import android.content.Context
 import android.util.Log
@@ -10,15 +10,15 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
-import com.lemillion.dolphin.data.dao.AccountDao
-import com.lemillion.dolphin.data.dao.UnenrichedTransactionDao
-import com.lemillion.dolphin.data.database.SeedDatabaseWorker.Companion.KEY_FILENAME
-import com.lemillion.dolphin.data.entity.Account
-import com.lemillion.dolphin.data.entity.Transaction
-import com.lemillion.dolphin.data.entity.UnenrichedTransaction
-import com.lemillion.dolphin.utilities.DATABASE_NAME
-import com.lemillion.dolphin.utilities.LocalDateConverter
-import com.lemillion.dolphin.utilities.SAMPLE_ACCOUNT_DATA_FILENAME
+import com.lemillion.minke.data.dao.AccountDao
+import com.lemillion.minke.data.dao.UnenrichedTransactionDao
+import com.lemillion.minke.data.database.SeedDatabaseWorker.Companion.KEY_FILENAME
+import com.lemillion.minke.data.entity.Account
+import com.lemillion.minke.data.entity.Transaction
+import com.lemillion.minke.data.entity.UnenrichedTransaction
+import com.lemillion.minke.utilities.DATABASE_NAME
+import com.lemillion.minke.utilities.LocalDateConverter
+import com.lemillion.minke.utilities.SAMPLE_ACCOUNT_DATA_FILENAME
 
 @Database(
     entities = arrayOf(Account::class, Transaction::class, UnenrichedTransaction::class),
