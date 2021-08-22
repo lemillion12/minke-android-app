@@ -1,48 +1,67 @@
 package com.lemillion.minke.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.lemillion.minke.R
 import com.lemillion.minke.data.entity.UnenrichedTransaction
+import com.lemillion.minke.databinding.ListItemTransactionBinding
 
 
-class TransactionViewAdapter(private val dataSet: Array<UnenrichedTransaction>) :
-    RecyclerView.Adapter<TransactionViewAdapter.ViewHolder>() {
+class TransactionViewAdapter() :
+    ListAdapter<UnenrichedTransaction, TransactionViewAdapter.TransactionViewHolder>(
+        TransactionDiffCallback()
+    ) {
+
+    // Create new views (invoked by the layout manager)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): TransactionViewHolder {
+        return TransactionViewHolder(
+            ListItemTransactionBinding.inflate(
+                LayoutInflater.from(viewGroup.context),
+                viewGroup,
+                false
+            )
+        )
+    }
+
+    // Replace the contents of a view (invoked by the layout manager)
+    override fun onBindViewHolder(transactionViewHolder: TransactionViewHolder, position: Int) {
+        val unenrichedTransaction = getItem(position)
+        transactionViewHolder.bind(unenrichedTransaction)
+    }
 
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
-
-        init {
-            // Define click listener for the ViewHolder's View.
-            textView = view.findViewById(R.id.tvTransaction)
+    class TransactionViewHolder(
+        private val binding: ListItemTransactionBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: UnenrichedTransaction) {
+            binding.apply {
+                unenrichedTransaction = item
+                executePendingBindings()
+            }
         }
+
     }
 
-    // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.text_row_item, viewGroup, false)
+}
 
-        return ViewHolder(view)
+private class TransactionDiffCallback : DiffUtil.ItemCallback<UnenrichedTransaction>() {
+
+    override fun areItemsTheSame(
+        oldItem: UnenrichedTransaction,
+        newItem: UnenrichedTransaction
+    ): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-        viewHolder.textView.text = dataSet[position].toString()
+    override fun areContentsTheSame(
+        oldItem: UnenrichedTransaction,
+        newItem: UnenrichedTransaction
+    ): Boolean {
+        return oldItem == newItem
     }
-
-    // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = dataSet.size
-
 }

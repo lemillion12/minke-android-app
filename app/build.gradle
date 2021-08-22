@@ -25,6 +25,10 @@ android {
         }
     }
 
+
+    buildFeatures {
+        dataBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -52,7 +56,7 @@ android {
 
 dependencies {
     // Base dependencies
-    implementation "androidx.core:core-ktx:$rootProject.androidxCoreVersion"
+    implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.appcompatVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
