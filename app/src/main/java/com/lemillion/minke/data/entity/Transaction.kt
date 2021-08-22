@@ -6,7 +6,6 @@ import java.time.LocalDate
 
 @Entity
 data class Transaction(
-    @PrimaryKey val id: Int,
     val accountId: Int,
     val transactionDate: LocalDate,
     val direction: TransactionDirection,
@@ -14,7 +13,10 @@ data class Transaction(
     val valueDate: LocalDate?,
     val referenceNumber: String?,
     val description: String?
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}
 
 enum class TransactionDirection {
     WITHDRAWAL, DEPOSIT;

@@ -5,11 +5,13 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Account(
-    @PrimaryKey(autoGenerate = true) val id: Int,
     val type: AccountType,
     val name: String,
     val number: String
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}
 
 enum class AccountType {
     SAVINGS, CREDIT_CARD, WALLET;

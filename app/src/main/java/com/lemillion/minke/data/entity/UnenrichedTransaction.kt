@@ -6,13 +6,15 @@ import java.time.LocalDate
 
 @Entity
 data class UnenrichedTransaction(
-    @PrimaryKey(autoGenerate = true) val id: Int,
     val accountNumber: String?,
     val message: String,
     val status: EnrichmentStatus,
     val type: MessageType,
     val insertDate: LocalDate
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}
 
 enum class MessageType {
     EXCEL_STATEMENT, TEXT_MESSAGE;
