@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/accounts">
+
+    <fragment
+        android:id="@+id/accounts"
+        android:name="com.lemillion.minke.fragment.AccountFragment"
+        android:label="@string/accounts"
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_accounts_to_transactions"
+            app:destination="@id/transactions" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactions"
+        android:name="com.lemillion.minke.fragment.UnenrichedTransactionFragment"
+        android:label="@string/transactions"
+        tools:layout="@layout/fragment_unenriched_transaction" />
+
+</navigation>
