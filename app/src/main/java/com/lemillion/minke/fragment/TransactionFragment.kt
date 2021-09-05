@@ -7,22 +7,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.lemillion.minke.adapter.TransactionViewAdapter
-import com.lemillion.minke.databinding.FragmentUnenrichedTransactionBinding
-import com.lemillion.minke.viewmodels.UnenrichedTransactionListViewModel
+import com.lemillion.minke.databinding.FragmentTransactionBinding
+import com.lemillion.minke.viewmodels.TransactionListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UnenrichedTransactionFragment : Fragment() {
+class TransactionFragment : Fragment() {
 
     private var transactionViewAdapter = TransactionViewAdapter()
-    private val viewModel: UnenrichedTransactionListViewModel by viewModels()
+    private val viewModel: TransactionListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentUnenrichedTransactionBinding.inflate(inflater, container, false)
+        val binding = FragmentTransactionBinding.inflate(inflater, container, false)
         context ?: return binding.root
         binding.rvTransactions.adapter = transactionViewAdapter
         subscribeUi()
@@ -30,7 +30,7 @@ class UnenrichedTransactionFragment : Fragment() {
     }
 
     private fun subscribeUi() {
-        viewModel.unenrichedTransactions.observe(
+        viewModel.transactions.observe(
             viewLifecycleOwner,
             { list ->
                 transactionViewAdapter.submitList(list)

@@ -2,7 +2,7 @@ package com.lemillion.minke.di
 
 import android.content.Context
 import com.lemillion.minke.data.dao.AccountDao
-import com.lemillion.minke.data.dao.UnenrichedTransactionDao
+import com.lemillion.minke.data.dao.TransactionDao
 import com.lemillion.minke.data.database.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -22,12 +22,12 @@ class DatabaseModule {
     }
 
     @Provides
-    fun providePlantDao(appDatabase: AppDatabase): AccountDao {
+    fun provideAccountDao(appDatabase: AppDatabase): AccountDao {
         return appDatabase.getAccountDao()
     }
 
     @Provides
-    fun provideGardenPlantingDao(appDatabase: AppDatabase): UnenrichedTransactionDao {
-        return appDatabase.getUnenrichedTransactionDao()
+    fun provideTransactionDao(appDatabase: AppDatabase): TransactionDao {
+        return appDatabase.getTransactionDao()
     }
 }

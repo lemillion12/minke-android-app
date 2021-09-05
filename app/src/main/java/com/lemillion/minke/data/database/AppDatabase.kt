@@ -11,26 +11,22 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
 import com.lemillion.minke.data.dao.AccountDao
-import com.lemillion.minke.data.dao.UnenrichedTransactionDao
+import com.lemillion.minke.data.dao.TransactionDao
 import com.lemillion.minke.data.database.SeedDatabaseWorker.Companion.KEY_ACCOUNT_FILENAME
 import com.lemillion.minke.data.database.SeedDatabaseWorker.Companion.KEY_TRANSACTION_FILENAME
 import com.lemillion.minke.data.entity.Account
 import com.lemillion.minke.data.entity.Transaction
-import com.lemillion.minke.data.entity.UnenrichedTransaction
-import com.lemillion.minke.utilities.DATABASE_NAME
-import com.lemillion.minke.utilities.LocalDateConverter
-import com.lemillion.minke.utilities.SAMPLE_ACCOUNT_DATA_FILENAME
-import com.lemillion.minke.utilities.SAMPLE_TRANSACTION_DATA_FILENAME
+import com.lemillion.minke.utilities.*
 
 @Database(
-    entities = arrayOf(Account::class, Transaction::class, UnenrichedTransaction::class),
+    entities = arrayOf(Account::class, Transaction::class),
     version = 1
 )
-@TypeConverters(LocalDateConverter::class)
+@TypeConverters(LocalDateConverter::class, CurrencyConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun getAccountDao(): AccountDao
-    abstract fun getUnenrichedTransactionDao(): UnenrichedTransactionDao
+    abstract fun getTransactionDao(): TransactionDao
 
     companion object {
         private const val TAG = "AppDatabase"

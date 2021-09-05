@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "accountId": 1,
+    "transactionDate": "2021-06-19",
+    "direction": "DEBIT",
+    "amount": 1.0,
+    "currency": "USD",
+    "valueDate": "2021-06-19",
+    "referenceNumber": "TestReferenceNumber",
+    "description": "UPDATE: INR 1 debited from A/c XX1234 on 18-JUN-21. Info: UPI-Mr. X-upiaddress@okaxis-SOMB0000789-987654321987-trf. Avl bal:INR 5"
+  },
+  {
+    "id": 2,
+    "accountId": 1,
+    "transactionDate": "2021-06-20",
+    "direction": "CREDIT",
+    "amount": 2.0,
+    "currency": "INR",
+    "valueDate": "2021-06-20",
+    "description": "UPDATE: USD 2 credited to A/c XX1234 on 19-JUN-21. Info: UPI-Mr. X-upiaddress@okaxis-SOMB0000789-123456789123-trf. Avl bal:INR 7"
+  }
+]

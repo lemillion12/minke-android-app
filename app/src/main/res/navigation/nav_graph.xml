@@ -17,8 +17,8 @@
 
     <fragment
         android:id="@+id/transactions"
-        android:name="com.lemillion.minke.fragment.UnenrichedTransactionFragment"
+        android:name="com.lemillion.minke.fragment.TransactionFragment"
         android:label="@string/transactions"
-        tools:layout="@layout/fragment_unenriched_transaction" />
+        tools:layout="@layout/fragment_transaction" />
 
 </navigation>

@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.lemillion.minke.data.entity.UnenrichedTransaction
+import com.lemillion.minke.data.entity.Transaction
 import com.lemillion.minke.databinding.ListItemTransactionBinding
 
 
 class TransactionViewAdapter() :
-    ListAdapter<UnenrichedTransaction, TransactionViewAdapter.TransactionViewHolder>(
+    ListAdapter<Transaction, TransactionViewAdapter.TransactionViewHolder>(
         TransactionDiffCallback()
     ) {
 
@@ -27,8 +27,8 @@ class TransactionViewAdapter() :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(transactionViewHolder: TransactionViewHolder, position: Int) {
-        val unenrichedTransaction = getItem(position)
-        transactionViewHolder.bind(unenrichedTransaction)
+        val transaction = getItem(position)
+        transactionViewHolder.bind(transaction)
     }
 
     /**
@@ -38,9 +38,9 @@ class TransactionViewAdapter() :
     class TransactionViewHolder(
         private val binding: ListItemTransactionBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: UnenrichedTransaction) {
+        fun bind(item: Transaction) {
             binding.apply {
-                unenrichedTransaction = item
+                transaction = item
                 executePendingBindings()
             }
         }
@@ -49,18 +49,18 @@ class TransactionViewAdapter() :
 
 }
 
-private class TransactionDiffCallback : DiffUtil.ItemCallback<UnenrichedTransaction>() {
+private class TransactionDiffCallback : DiffUtil.ItemCallback<Transaction>() {
 
     override fun areItemsTheSame(
-        oldItem: UnenrichedTransaction,
-        newItem: UnenrichedTransaction
+        oldItem: Transaction,
+        newItem: Transaction
     ): Boolean {
         return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(
-        oldItem: UnenrichedTransaction,
-        newItem: UnenrichedTransaction
+        oldItem: Transaction,
+        newItem: Transaction
     ): Boolean {
         return oldItem == newItem
     }

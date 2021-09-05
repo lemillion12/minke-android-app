@@ -9,11 +9,13 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.lemillion.minke.data.entity.Account
-import com.lemillion.minke.data.entity.UnenrichedTransaction
+import com.lemillion.minke.data.entity.Transaction
+import com.lemillion.minke.utilities.CurrencyTypeAdapter
 import com.lemillion.minke.utilities.LocalDateTypeAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.time.LocalDate
+import java.util.*
 
 class SeedDatabaseWorker(
     context: Context,
@@ -45,10 +47,10 @@ class SeedDatabaseWorker(
     }
 
     private suspend fun loadTransactionData(filename: String) {
-        val unenrichedTransactions = readTransactionsDataFromFile(filename)
+        val transactions = readTransactionsDataFromFile(filename)
         val database = AppDatabase.getInstance(applicationContext)
         Log.i(TAG, "Inserting initial transactions")
-        database.getUnenrichedTransactionDao().insertAll(unenrichedTransactions)
+        database.getTransactionDao().insertAll(transactions)
     }
 
     private fun readAccountsDataFromFile(filename: String): List<Account> {
@@ -63,16 +65,20 @@ class SeedDatabaseWorker(
         }
     }
 
-    private fun readTransactionsDataFromFile(filename: String): List<UnenrichedTransaction> {
+    private fun readTransactionsDataFromFile(filename: String): List<Transaction> {
         applicationContext.assets.open(filename).use { inputStream ->
             JsonReader(inputStream.reader()).use { jsonReader ->
                 val transactionType =
-                    object : TypeToken<List<UnenrichedTransaction>>() {}.type
+                    object : TypeToken<List<Transaction>>() {}.type
                 val gson: Gson = GsonBuilder()
                     .setDateFormat("yyyy-MM-dd")
                     .registerTypeAdapter(
                         LocalDate::class.java,
                         LocalDateTypeAdapter().nullSafe()
+                    )
+                    .registerTypeAdapter(
+                        Currency::class.java,
+                        CurrencyTypeAdapter().nullSafe()
                     )
                     .create()
                 return gson.fromJson(jsonReader, transactionType)
