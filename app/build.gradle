@@ -1,22 +1,22 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id("com.android.application")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion "30.0.2"
+    compileSdkVersion(rootProject.compileSdkVersion)
+    buildToolsVersion = "30.0.2"
 
     defaultConfig {
-        applicationId "com.lemillion.minke"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.lemillion.minke"
+        minSdkVersion(rootProject.minSdkVersion)
+        targetSdkVersion(rootProject.targetSdkVersion)
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -27,20 +27,20 @@ android {
 
 
     buildFeatures {
-        dataBinding true
+        dataBinding = true
     }
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        getByName("release") {
+            minifyEnabled = false
+            proguardFiles(getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro')
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
 
         // Enable Coroutines and Flow APIs
         freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
@@ -56,14 +56,13 @@ android {
 
 dependencies {
     // Base dependencies
-    implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
-    implementation "androidx.appcompat:appcompat:$rootProject.appcompatVersion"
-    implementation "com.google.android.material:material:$rootProject.materialVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation("androidx.core:core-ktx:$rootProject.coreKtxVersion")
+    implementation("androidx.appcompat:appcompat:$rootProject.appcompatVersion")
+    implementation("com.google.android.material:material:$rootProject.materialVersion")
+    implementation("androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion")
 
     // Room dependencies
     implementation("androidx.room:room-runtime:$rootProject.roomVersion")
-    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$rootProject.roomVersion")
     // Kotlin Extensions and Coroutines support for Room
@@ -73,16 +72,16 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:$rootProject.workVersion")
 
     // Gson
-    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation("com.google.code.gson:gson:$rootProject.gsonVersion")
 
     // Recycler View
-    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+    implementation("androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion")
 
     // Fragment
-    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
+    implementation("androidx.fragment:fragment-ktx:$rootProject.fragmentVersion")
 
     // lifecycle
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecycleVersion"
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecycleVersion")
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion")
     // LiveData
@@ -93,8 +92,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$rootProject.lifecycleVersion")
 
     // Dependency Injection
-    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
-    kapt "com.google.dagger:hilt-compiler:$rootProject.hiltVersion"
+    implementation("com.google.dagger:hilt-android:$rootProject.hiltVersion")
+    kapt("com.google.dagger:hilt-compiler:$rootProject.hiltVersion")
 
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion")
@@ -103,8 +102,16 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$rootProject.navigationComposeVersion")
 
     // Testing
-    testImplementation "junit:junit:$rootProject.junitVersion"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.junitExtVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    testImplementation("junit:junit:$rootProject.junitVersion")
+    androidTestImplementation("androidx.test.ext:junit:$rootProject.junitExtVersion")
+    androidTestImplementation("androidx.test.espresso:espresso-core:$rootProject.espressoVersion")
+    testImplementation("androidx.room:room-testing:$rootProject.roomVersion")
+    testImplementation("com.google.dagger:hilt-android-testing:$rootProject.hiltVersion")
+    kaptTest("com.google.dagger:hilt-compiler:$rootProject.hiltVersion")
     androidTestImplementation("androidx.navigation:navigation-testing:$rootProject.navigationVersion")
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }
