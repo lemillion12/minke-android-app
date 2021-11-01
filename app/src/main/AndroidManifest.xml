@@ -4,7 +4,7 @@
     package="com.lemillion.minke">
 
     <application
-        android:name=".MainApplication"
+        android:name=".MinkeApplication"
         android:icon="@mipmap/ic_minke"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_minke_round"
