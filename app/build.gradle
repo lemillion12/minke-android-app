@@ -28,6 +28,7 @@ android {
 
     buildFeatures {
         dataBinding = true
+        compose = true
     }
     buildTypes {
         getByName("release") {
@@ -38,6 +39,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    composeOptions{
+        kotlinCompilerExtensionVersion(rootProject.composeVersion)
     }
     kotlinOptions {
         jvmTarget = '11'
@@ -53,11 +57,27 @@ android {
         excludes += "/META-INF/LGPL2.1"
     }
 }
-
 dependencies {
     // Base dependencies
     implementation("androidx.core:core-ktx:$rootProject.coreKtxVersion")
     implementation("androidx.appcompat:appcompat:$rootProject.appcompatVersion")
+
+    // Compose
+    implementation("androidx.activity:activity-compose:$rootProject.activityComposeVersion")
+    implementation("androidx.compose.animation:animation:$rootProject.composeVersion")
+    implementation("androidx.compose.foundation:foundation:$rootProject.composeVersion")
+    implementation("androidx.compose.foundation:foundation-layout:$rootProject.composeVersion")
+    implementation("androidx.compose.material:material:$rootProject.composeVersion")
+    implementation("androidx.compose.material:material-icons-core:$rootProject.composeVersion")
+    implementation("androidx.compose.material:material-icons-extended:$rootProject.composeVersion")
+    implementation("androidx.compose.runtime:runtime:$rootProject.composeVersion")
+    implementation("androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion")
+    implementation("androidx.compose.ui:ui:$rootProject.composeVersion")
+    implementation("androidx.compose.ui:ui-tooling:$rootProject.composeVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$rootProject.lifecycleComposeVersion")
+    implementation("com.google.android.material:compose-theme-adapter:$rootProject.composeVersion")
+
+    // UI
     implementation("com.google.android.material:material:$rootProject.materialVersion")
     implementation("androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion")
 
@@ -109,6 +129,8 @@ dependencies {
     testImplementation("com.google.dagger:hilt-android-testing:$rootProject.hiltVersion")
     kaptTest("com.google.dagger:hilt-compiler:$rootProject.hiltVersion")
     androidTestImplementation("androidx.navigation:navigation-testing:$rootProject.navigationVersion")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$rootProject.composeVersion")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$rootProject.composeVersion")
 }
 
 // Allow references to generated code
