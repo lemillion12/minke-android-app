@@ -16,7 +16,11 @@ import com.lemillion.minke.data.database.SeedDatabaseWorker.Companion.KEY_ACCOUN
 import com.lemillion.minke.data.database.SeedDatabaseWorker.Companion.KEY_TRANSACTION_FILENAME
 import com.lemillion.minke.data.entity.Account
 import com.lemillion.minke.data.entity.Transaction
-import com.lemillion.minke.utilities.*
+import com.lemillion.minke.utility.CurrencyConverter
+import com.lemillion.minke.utility.DATABASE_NAME
+import com.lemillion.minke.utility.LocalDateConverter
+import com.lemillion.minke.utility.SAMPLE_ACCOUNT_DATA_FILENAME
+import com.lemillion.minke.utility.SAMPLE_TRANSACTION_DATA_FILENAME
 
 @Database(
     entities = arrayOf(Account::class, Transaction::class),

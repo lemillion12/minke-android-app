@@ -1,4 +1,4 @@
-package com.lemillion.minke.viewmodels
+package com.lemillion.minke.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

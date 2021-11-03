@@ -1,4 +1,4 @@
-package com.lemillion.minke.ui
+package com.lemillion.minke.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,10 +20,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.lemillion.minke.data.entity.Account
-import com.lemillion.minke.viewmodels.AccountListViewModel
+import com.lemillion.minke.viewmodel.AccountListViewModel
 
 @Composable
-fun AccountView(accountListViewModel: AccountListViewModel = viewModel()) {
+fun AccountsView(accountListViewModel: AccountListViewModel = viewModel()) {
     val accounts by accountListViewModel.accounts.observeAsState(initial = emptyList())
     AccountList(accounts)
 }

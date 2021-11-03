@@ -1,4 +1,4 @@
-package com.lemillion.minke.utilities
+package com.lemillion.minke.utility
 
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader

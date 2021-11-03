@@ -1,4 +1,4 @@
-package com.lemillion.minke.utilities
+package com.lemillion.minke.utility
 
 import androidx.room.TypeConverter
 import java.time.LocalDate

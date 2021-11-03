@@ -1,4 +1,4 @@
-package com.lemillion.minke.utilities
+package com.lemillion.minke.utility
 
 /**
  * Constants used throughout the app.

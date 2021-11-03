@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.composethemeadapter.MdcTheme
 import com.lemillion.minke.databinding.FragmentAccountBinding
-import com.lemillion.minke.ui.AccountView
-import com.lemillion.minke.viewmodels.AccountListViewModel
+import com.lemillion.minke.view.AccountsView
+import com.lemillion.minke.viewmodel.AccountListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,9 +24,9 @@ class AccountFragment : Fragment() {
     ): View {
         val binding = FragmentAccountBinding.inflate(inflater, container, false)
         context ?: return binding.root
-        binding.composeAccount.setContent {
+        binding.viewAccounts.setContent {
             MdcTheme {
-                AccountView(viewModel)
+                AccountsView(viewModel)
             }
         }
         return binding.root

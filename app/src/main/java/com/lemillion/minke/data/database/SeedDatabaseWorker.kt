@@ -10,8 +10,8 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.lemillion.minke.data.entity.Account
 import com.lemillion.minke.data.entity.Transaction
-import com.lemillion.minke.utilities.CurrencyTypeAdapter
-import com.lemillion.minke.utilities.LocalDateTypeAdapter
+import com.lemillion.minke.utility.CurrencyTypeAdapter
+import com.lemillion.minke.utility.LocalDateTypeAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.time.LocalDate
