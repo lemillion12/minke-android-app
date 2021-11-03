@@ -9,7 +9,7 @@ import com.lemillion.minke.view.AccountList
 import org.junit.Rule
 import org.junit.Test
 
-class AccountViewTest {
+class AccountsViewTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
@@ -22,7 +22,6 @@ class AccountViewTest {
         composeTestRule.setContent {
             AccountList(accounts)
         }
-        Thread.sleep(5000)
 
         composeTestRule.onNode(hasText(account.toString())).assertIsDisplayed()
     }
