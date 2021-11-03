@@ -1,11 +1,10 @@
-package com.lemillion.minke
+package com.lemillion.minke.ui
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.lemillion.minke.data.entity.Account
 import com.lemillion.minke.data.entity.AccountType
-import com.lemillion.minke.view.AccountList
 import org.junit.Rule
 import org.junit.Test
 

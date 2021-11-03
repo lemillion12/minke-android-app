@@ -1,32 +1,28 @@
 package com.lemillion.minke
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
-import com.lemillion.minke.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.material.MaterialTheme
+import com.lemillion.minke.ui.BottomNavigationView
+import com.lemillion.minke.viewmodel.AccountListViewModel
+import com.lemillion.minke.viewmodel.TransactionListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
+
+    private val accountListViewModel: AccountListViewModel by viewModels()
+    private val transactionListViewModel: TransactionListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding =
-            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-
-        //Initialize NavController.
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
-        val navController: NavController = navHostFragment.navController
-
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
-        val bottomNavigation = binding.bottomNavigation
-        bottomNavigation.setupWithNavController(navController)
+        setContent {
+            MaterialTheme {
+                BottomNavigationView(accountListViewModel, transactionListViewModel)
+            }
+        }
     }
 }

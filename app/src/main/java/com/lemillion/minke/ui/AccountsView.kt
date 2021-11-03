@@ -1,4 +1,4 @@
-package com.lemillion.minke.view
+package com.lemillion.minke.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,34 +19,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.lemillion.minke.data.entity.Transaction
-import com.lemillion.minke.viewmodel.TransactionListViewModel
+import com.lemillion.minke.data.entity.Account
+import com.lemillion.minke.viewmodel.AccountListViewModel
 
 @Composable
-fun TransactionsView(transactionListViewModel: TransactionListViewModel = viewModel()) {
-    val transactions by transactionListViewModel.transactions.observeAsState(initial = emptyList())
-    TransactionList(transactions)
+fun AccountsView(accountListViewModel: AccountListViewModel = viewModel()) {
+    val accounts by accountListViewModel.accounts.observeAsState(initial = emptyList())
+    AccountList(accounts)
 }
 
 @Composable
-fun TransactionList(transactions: List<Transaction>) {
+fun AccountList(accounts: List<Account>) {
     LazyColumn(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     ) {
         items(
-            items = transactions,
-            key = { transaction ->
+            items = accounts,
+            key = { account ->
                 // Return a stable + unique key for the item
-                transaction.id
+                account.id
             }
-        ) { transaction ->
-            TransactionListItem(transaction)
+        ) { account ->
+            AccountListItem(account)
         }
     }
 }
 
 @Composable
-fun TransactionListItem(transaction: Transaction) {
+fun AccountListItem(account: Account) {
     Card(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 8.dp)
@@ -62,7 +62,7 @@ fun TransactionListItem(transaction: Transaction) {
                     .fillMaxWidth()
                     .align(Alignment.CenterVertically)
             ) {
-                Text(transaction.toString())
+                Text(account.toString())
             }
         }
     }
