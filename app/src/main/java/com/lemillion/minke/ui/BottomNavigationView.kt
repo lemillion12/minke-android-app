@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -23,8 +24,8 @@ import com.lemillion.minke.viewmodel.TransactionListViewModel
 
 @Composable
 fun BottomNavigationView(
-    accountListViewModel: AccountListViewModel,
-    transactionListViewModel: TransactionListViewModel
+    accountListViewModel: AccountListViewModel = viewModel(),
+    transactionListViewModel: TransactionListViewModel = viewModel()
 ) {
     val navController = rememberNavController()
     Scaffold(
@@ -79,8 +80,8 @@ fun BottomNavigationBar(
 fun NavHostContainer(
     navController: NavHostController,
     padding: PaddingValues,
-    accountListViewModel: AccountListViewModel,
-    transactionListViewModel: TransactionListViewModel
+    accountListViewModel: AccountListViewModel = viewModel(),
+    transactionListViewModel: TransactionListViewModel = viewModel()
 ) {
     NavHost(
         navController = navController,
