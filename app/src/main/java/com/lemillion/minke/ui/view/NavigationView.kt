@@ -2,11 +2,12 @@ package com.lemillion.minke.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -19,18 +20,25 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.lemillion.minke.ui.view.View
 import com.lemillion.minke.viewmodel.AccountListViewModel
 import com.lemillion.minke.viewmodel.TransactionListViewModel
 
+val views = listOf(
+    View.AccountsView,
+    View.TransactionsView,
+)
+
+@ExperimentalMaterial3Api
 @Composable
-fun BottomNavigationView(
+fun NavigationView(
     accountListViewModel: AccountListViewModel = viewModel(),
     transactionListViewModel: TransactionListViewModel = viewModel()
 ) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
-            BottomNavigationBar(navController)
+            NavigationBar(navController)
         },
         content = { padding ->
             NavHostContainer(
@@ -44,15 +52,14 @@ fun BottomNavigationView(
 }
 
 @Composable
-fun BottomNavigationBar(
+fun NavigationBar(
     navController: NavHostController
 ) {
-
-    BottomNavigation {
+    NavigationBar {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
         views.forEach { view ->
-            BottomNavigationItem(
+            NavigationBarItem(
                 icon = { Icon(imageVector = view.icon, contentDescription = view.route) },
                 label = { Text(stringResource(view.label)) },
                 selected = currentDestination?.hierarchy?.any { it.route == view.route } == true,

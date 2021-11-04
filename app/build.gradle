@@ -68,6 +68,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:$rootProject.composeVersion")
     implementation("androidx.compose.foundation:foundation-layout:$rootProject.composeVersion")
     implementation("androidx.compose.material:material:$rootProject.composeVersion")
+    implementation("androidx.compose.material3:material3:$rootProject.material3Version")
     implementation("androidx.compose.material:material-icons-core:$rootProject.composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$rootProject.composeVersion")
     implementation("androidx.compose.runtime:runtime:$rootProject.composeVersion")

@@ -1,18 +1,20 @@
 package com.lemillion.minke
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.material.MaterialTheme
-import com.lemillion.minke.ui.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.ExperimentalMaterial3Api
+import com.lemillion.minke.ui.NavigationView
+import com.lemillion.minke.ui.theme.MinkeTheme
 import com.lemillion.minke.viewmodel.AccountListViewModel
 import com.lemillion.minke.viewmodel.TransactionListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
+@ExperimentalMaterial3Api
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val accountListViewModel: AccountListViewModel by viewModels()
     private val transactionListViewModel: TransactionListViewModel by viewModels()
@@ -20,8 +22,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme {
-                BottomNavigationView(accountListViewModel, transactionListViewModel)
+            MinkeTheme {
+                NavigationView(accountListViewModel, transactionListViewModel)
             }
         }
     }
