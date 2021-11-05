@@ -64,7 +64,9 @@ fun NavigationBar(
             NavigationBarItem(
                 icon = { Icon(imageVector = view.icon, contentDescription = view.route) },
                 label = { Text(stringResource(view.label)) },
-                selected = currentDestination?.hierarchy?.any { it.route == view.route } == true,
+                selected = currentDestination?.hierarchy?.any {
+                    it.route?.startsWith(view.route) ?: false
+                } == true,
                 onClick = {
                     navController.navigate(view.route) {
                         // Pop up to the start destination of the graph to
@@ -79,7 +81,8 @@ fun NavigationBar(
                         // Restore state when reselecting a previously selected item
                         restoreState = true
                     }
-                }
+                },
+                alwaysShowLabel = true
             )
         }
     }
