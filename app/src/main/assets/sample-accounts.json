@@ -4,5 +4,11 @@
     "name": "Bank Of Sanyam",
     "number": "004561234",
     "type": "SAVINGS"
+  },
+  {
+    "id": 2,
+    "name": "Mehta Card",
+    "number": "0012345678",
+    "type": "CREDIT_CARD"
   }
 ]

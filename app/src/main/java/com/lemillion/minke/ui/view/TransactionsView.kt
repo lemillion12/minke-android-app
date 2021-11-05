@@ -1,4 +1,4 @@
-package com.lemillion.minke.ui
+package com.lemillion.minke.ui.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,9 +23,14 @@ import com.lemillion.minke.data.entity.Transaction
 import com.lemillion.minke.viewmodel.TransactionListViewModel
 
 @Composable
-fun TransactionsView(transactionListViewModel: TransactionListViewModel = viewModel()) {
+fun TransactionsView(
+    transactionListViewModel: TransactionListViewModel = viewModel(),
+    accountId: Long?
+) {
     val transactions by transactionListViewModel.transactions.observeAsState(initial = emptyList())
-    TransactionList(transactions)
+    accountId?.let {
+        TransactionList(transactions.filter { transaction -> accountId == transaction.accountId })
+    } ?: TransactionList(transactions)
 }
 
 @Composable

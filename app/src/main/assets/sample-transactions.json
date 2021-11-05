@@ -19,5 +19,15 @@
     "currency": "INR",
     "valueDate": "2021-06-20",
     "description": "UPDATE: USD 2 credited to A/c XX1234 on 19-JUN-21. Info: UPI-Mr. X-upiaddress@okaxis-SOMB0000789-123456789123-trf. Avl bal:INR 7"
+  },
+  {
+    "id": 3,
+    "accountId": 2,
+    "transactionDate": "2021-06-20",
+    "direction": "CREDIT",
+    "amount": 2.0,
+    "currency": "INR",
+    "valueDate": "2021-06-20",
+    "description": "UPDATE: USD 2 credited to A/c XX1234 on 19-JUN-21. Info: UPI-Mr. X-upiaddress@okaxis-SOMB0000789-123456789123-trf. Avl bal:INR 7"
   }
 ]

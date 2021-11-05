@@ -1,7 +1,8 @@
-package com.lemillion.minke.ui
+package com.lemillion.minke.ui.view
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -20,7 +21,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.lemillion.minke.ui.view.View
+import androidx.navigation.navArgument
 import com.lemillion.minke.viewmodel.AccountListViewModel
 import com.lemillion.minke.viewmodel.TransactionListViewModel
 
@@ -29,6 +30,7 @@ val views = listOf(
     View.TransactionsView,
 )
 
+@ExperimentalMaterialApi
 @ExperimentalMaterial3Api
 @Composable
 fun NavigationView(
@@ -83,6 +85,7 @@ fun NavigationBar(
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun NavHostContainer(
     navController: NavHostController,
@@ -95,7 +98,19 @@ fun NavHostContainer(
         startDestination = View.AccountsView.route,
         modifier = Modifier.padding(padding)
     ) {
-        composable(View.AccountsView.route) { AccountsView(accountListViewModel) }
-        composable(View.TransactionsView.route) { TransactionsView(transactionListViewModel) }
+        composable(View.AccountsView.route) {
+            AccountsView(navController, accountListViewModel)
+        }
+        composable(
+            View.TransactionsView.accountIdRoute("{accountId}"),
+            arguments = listOf(navArgument("accountId") {
+                nullable = true
+            })
+        ) { backStackEntry ->
+            TransactionsView(
+                transactionListViewModel,
+                backStackEntry.arguments?.getString("accountId")?.toLong()
+            )
+        }
     }
 }

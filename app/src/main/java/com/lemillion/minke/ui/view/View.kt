@@ -8,7 +8,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.lemillion.minke.R
 
 sealed class View(val route: String, @StringRes val label: Int, val icon: ImageVector) {
-    object AccountsView : View("accounts", R.string.accounts, Icons.Filled.AccountBalance)
+    object AccountsView :
+        View("accounts", R.string.accounts, Icons.Filled.AccountBalance)
+
     object TransactionsView :
-        View("transactions", R.string.transactions, Icons.Filled.Payments)
+        View("transactions", R.string.transactions, Icons.Filled.Payments) {
+        fun accountIdRoute(accountId: Any): String {
+            return this.route.plus("?accountId=").plus(accountId)
+        }
+    }
 }

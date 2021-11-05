@@ -5,6 +5,7 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.lemillion.minke.data.entity.Transaction
 import com.lemillion.minke.data.entity.TransactionDirection
+import com.lemillion.minke.ui.view.TransactionList
 import org.junit.Rule
 import org.junit.Test
 import java.time.LocalDate

@@ -7,7 +7,7 @@ import java.util.*
 
 @Entity
 data class Transaction(
-    val accountId: Int,
+    val accountId: Long,
     val transactionDate: LocalDate,
     val direction: TransactionDirection,
     val amount: Double,
