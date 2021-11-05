@@ -95,12 +95,6 @@ dependencies {
     // Gson
     implementation("com.google.code.gson:gson:$rootProject.gsonVersion")
 
-    // Recycler View
-    implementation("androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion")
-
-    // Fragment
-    implementation("androidx.fragment:fragment-ktx:$rootProject.fragmentVersion")
-
     // lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecycleVersion")
     // ViewModel
@@ -117,7 +111,6 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:$rootProject.hiltVersion")
 
     // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion")
     implementation("androidx.navigation:navigation-compose:$rootProject.navigationVersion")

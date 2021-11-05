@@ -26,8 +26,8 @@ import com.lemillion.minke.viewmodel.AccountListViewModel
 import com.lemillion.minke.viewmodel.TransactionListViewModel
 
 val views = listOf(
-    View.AccountsView,
-    View.TransactionsView,
+    View.Accounts,
+    View.Transactions,
 )
 
 @ExperimentalMaterialApi
@@ -98,14 +98,14 @@ fun NavHostContainer(
 ) {
     NavHost(
         navController = navController,
-        startDestination = View.AccountsView.route,
+        startDestination = View.Accounts.route,
         modifier = Modifier.padding(padding)
     ) {
-        composable(View.AccountsView.route) {
+        composable(View.Accounts.route) {
             AccountsView(navController, accountListViewModel)
         }
         composable(
-            View.TransactionsView.accountIdRoute("{accountId}"),
+            View.Transactions.accountIdRoute("{accountId}"),
             arguments = listOf(navArgument("accountId") {
                 nullable = true
             })

@@ -11,13 +11,14 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -61,10 +62,11 @@ fun AccountListItem(navController: NavHostController, account: Account) {
             .padding(horizontal = 8.dp, vertical = 8.dp)
             .fillMaxWidth(),
         elevation = 2.dp,
-        backgroundColor = Color.White,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
+        backgroundColor = MaterialTheme.colorScheme.surface,
+        contentColor = contentColorFor(MaterialTheme.colorScheme.surface),
         onClick = {
-            navController.navigate(View.TransactionsView.accountIdRoute(account.id)) {
+            navController.navigate(View.Transactions.accountIdRoute(account.id)) {
                 // Pop up to the start destination of the graph to
                 // avoid building up a large stack of destinations
                 // on the back stack as users select items

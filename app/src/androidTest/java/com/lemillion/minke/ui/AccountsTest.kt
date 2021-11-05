@@ -13,7 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalMaterialApi
-class AccountsViewTest {
+class AccountsTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
