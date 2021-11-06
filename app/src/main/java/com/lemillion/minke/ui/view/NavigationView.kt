@@ -1,8 +1,12 @@
 package com.lemillion.minke.ui.view
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -12,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -22,6 +27,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.lemillion.minke.ui.multifab.MultiFabItem
+import com.lemillion.minke.ui.multifab.MultiFloatingActionButton
 import com.lemillion.minke.viewmodel.AccountListViewModel
 import com.lemillion.minke.viewmodel.TransactionListViewModel
 
@@ -49,6 +56,9 @@ fun NavigationView(
                 accountListViewModel,
                 transactionListViewModel
             )
+        },
+        floatingActionButton = {
+            SpeedDial()
         }
     )
 }
@@ -66,7 +76,7 @@ fun NavigationBar(
                 label = { Text(stringResource(view.label)) },
                 selected = currentDestination?.hierarchy?.any {
                     it.route?.startsWith(view.route) ?: false
-                } == true,
+                } ?: false,
                 onClick = {
                     navController.navigate(view.route) {
                         // Pop up to the start destination of the graph to
@@ -116,4 +126,35 @@ fun NavHostContainer(
             )
         }
     }
+}
+
+@Composable
+fun SpeedDial() {
+    val context = LocalContext.current
+    val items = listOf(
+        MultiFabItem(
+            View.Accounts.icon,
+            stringResource(View.Accounts.label)
+        ) {
+            makeToast(context, "Accounts FAB clicked! Adding Account logic not yet implemented")
+        },
+        MultiFabItem(
+            View.Transactions.icon,
+            stringResource(View.Transactions.label)
+        ) {
+            makeToast(
+                context,
+                "Transactions FAB clicked! Adding Transaction logic not yet implemented"
+            )
+        }
+    )
+    MultiFloatingActionButton(
+        fabIcon = Icons.Filled.Add,
+        items = items,
+        showLabels = true
+    )
+}
+
+private fun makeToast(context: Context, text: String) {
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }
