@@ -30,6 +30,9 @@ android {
         dataBinding = true
         compose = true
     }
+    composeOptions{
+        kotlinCompilerExtensionVersion(rootProject.composeVersion)
+    }
     buildTypes {
         getByName("release") {
             minifyEnabled = false
@@ -39,9 +42,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    composeOptions{
-        kotlinCompilerExtensionVersion(rootProject.composeVersion)
     }
     kotlinOptions {
         jvmTarget = '11'
@@ -95,7 +95,7 @@ dependencies {
     // Gson
     implementation("com.google.code.gson:gson:$rootProject.gsonVersion")
 
-    // lifecycle
+    // Lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecycleVersion")
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion")
@@ -114,6 +114,9 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion")
     implementation("androidx.navigation:navigation-compose:$rootProject.navigationVersion")
+
+    // Multi Floating Action Button
+    implementation("com.github.lemillion12:multi-floating-action-button:$rootProject.multiFabVersion")
 
     // Testing
     testImplementation("junit:junit:$rootProject.junitVersion")

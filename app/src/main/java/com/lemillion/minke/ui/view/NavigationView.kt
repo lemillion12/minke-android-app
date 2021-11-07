@@ -27,8 +27,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.lemillion.minke.ui.multifab.MultiFabItem
-import com.lemillion.minke.ui.multifab.MultiFloatingActionButton
+import com.lemillion.android.fab.FabItem
+import com.lemillion.android.fab.MultiFloatingActionButton
 import com.lemillion.minke.viewmodel.AccountListViewModel
 import com.lemillion.minke.viewmodel.TransactionListViewModel
 
@@ -132,13 +132,13 @@ fun NavHostContainer(
 fun SpeedDial() {
     val context = LocalContext.current
     val items = listOf(
-        MultiFabItem(
+        FabItem(
             View.Accounts.icon,
             stringResource(View.Accounts.label)
         ) {
             makeToast(context, "Accounts FAB clicked! Adding Account logic not yet implemented")
         },
-        MultiFabItem(
+        FabItem(
             View.Transactions.icon,
             stringResource(View.Transactions.label)
         ) {
